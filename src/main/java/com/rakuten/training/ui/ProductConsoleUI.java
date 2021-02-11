@@ -2,15 +2,30 @@ package com.rakuten.training.ui;
 
 import java.util.Scanner;
 
+import javax.annotation.PostConstruct;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.rakuten.training.domain.Product;
 import com.rakuten.training.service.ProductService;
 
+@Component         
 public class ProductConsoleUI {
 	
 	
 	ProductService service;
 	
+	public ProductConsoleUI() {
+		System.out.println("{{{{{Constructor Called }}}}  value of service ===> " + service);
+	}
 	
+	@PostConstruct
+	public void init() {
+		System.out.println("<<<<< Init called >>>>>> value of dependency ===> " + service);
+	}
+	
+	@Autowired
 	public void setService(ProductService service) {
 		this.service = service;
 	}
@@ -29,7 +44,7 @@ public class ProductConsoleUI {
 			
 			Product toBeCreated = new Product(name, price, qoh);
 			int id = service.createNewProduct(toBeCreated);
-			System.out.println("Created product with id" + id);
+			System.out.println("Created product with id  " + id);
 			
 		}
 	}

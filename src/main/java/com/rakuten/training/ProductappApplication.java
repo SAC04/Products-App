@@ -12,14 +12,11 @@ public class ProductappApplication {
 	public static void main(String[] args) {
 		
 		
-//		ApplicationContext springContainer =
-//				SpringApplication.run(ProductappApplication.class, args);
-//		
-		ProductConsoleUI ui = new ProductConsoleUI();
+		ApplicationContext springContainer =
+				SpringApplication.run(ProductappApplication.class, args);
+		 
+		ProductConsoleUI ui = springContainer.getBean(ProductConsoleUI.class);
 		ui.createProductWithUI();
-		
-//		ProductConsoleUI ui = springContainer.getBean(ProductConsoleUI.class);
-//		ui.createProductWithUI();
 		
 	}
 }

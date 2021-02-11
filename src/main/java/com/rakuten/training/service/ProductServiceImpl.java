@@ -2,14 +2,19 @@ package com.rakuten.training.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.rakuten.training.dal.ProductDAO;
-import com.rakuten.training.dal.ProductDAOInMemImpl;
 import com.rakuten.training.domain.Product;
 
+
+@Service
 public class ProductServiceImpl implements ProductService{
 	
 	ProductDAO dao; // = new ProductDAOInMemImpl();
 	
+	@Autowired
 	public void setDao(ProductDAO dao) {
 		this.dao = dao;
 	}
